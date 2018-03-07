@@ -1,0 +1,22 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-admob-simple": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-admob-sdklibs": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    }
+  }
+}

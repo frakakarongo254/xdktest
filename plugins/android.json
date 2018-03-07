@@ -1,0 +1,28 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-admob-simple": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-admob-sdklibs": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    }
+  }
+}

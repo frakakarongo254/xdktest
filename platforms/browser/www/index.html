@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+    <!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="app_framework/3.0/af.ui.css" data-ver="2">
+        <link rel="stylesheet" type="text/css" href="app_framework/3.0/icons.min.css">
+        <title>Swahilibox App</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="lib/appframework/icons.css">
+        <link rel="stylesheet" type="text/css" href="lib/appframework/af.ui.css">
+        <link rel="stylesheet" href="css/design.css" type="text/css">
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+
+        <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="lib/fastclick.min.js"></script>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+
+        <script type="text/javascript" src="js/drop.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+        <script src="http://debug-software.intel.com/target/target-script-min.js#MKsEsaKLwNSSAcBAJGpI-CSJMMeCyNxtUYCVNBWKqf0"></script>
+
+        <!--
+  * The "meta viewport" tag (below) helps your app size appropriately to a device's ideal viewport.
+  * Note that Windows device viewports work better when initialized using the @viewport CSS rule.
+  * For a quick overview of "meta viewport" and @viewport, see this article:
+  *   http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+  * To see how it works, try your app on a real device with and without a "meta viewport" tag.
+  * Additional useful references include:
+  *   http://www.quirksmode.org/mobile/viewports.html
+  *   http://www.quirksmode.org/mobile/metaviewport/devices.html
+  *   https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+-->
+
+        <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+        <style>
+            /* following three (cascaded) are equivalent to above three meta viewport statements */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+                @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+                /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="js/sweetalert.css">
+
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <!-- Recommended location for your JavaScript libraries -->
+        <!-- These library references (below) are just examples to give you the general idea... -->
+        <!-- <script src="lib/mc/hammer.js"></script> -->
+        <!-- <script src="lib/ft/fastclick.js"></script> -->
+
+        <!--
+  * cordova.js is a phantom lib for "Cordova HTML5 web app," it does nothing in a "Standard HTML5 web app"
+  * Seeing a "Failed to load resource: net::ERR_FILE_NOT_FOUND" message caused by this "cordova.js" script?
+  * The cordova.js script is required if you convert your "Standard HTML5" project into a "Cordova" project.
+  * You can safely ignore the error or comment out this line if you will not be developing a Cordova app.
+-->
+        <script src="cordova.js" id="xdkJScordova_"></script>
+
+        <script src="js/app.js"></script>
+        <!-- for your event code, see README and file comments for details -->
+        <script src="js/init-app.js"></script>
+        <!-- for your init code, see README and file comments for details -->
+        <script src="xdk/init-dev.js"></script>
+        <!-- normalizes device and document ready events, see file for details -->
+        <!--
+            You may substitute jQuery for the App Framework selector library.
+            See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+        -->
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="app_framework/3.0/appframework.ui.min.js"></script>
+        <script type="application/javascript">
+            $.afui.autoLaunch = false; //By default, it is set to true and you're app will run right away.  We set it to false to show a splashscreen
+            /* This function runs when the content is loaded.*/
+            $.afui.useOSThemes=false;
+             $(document).ready(function(){
+                setTimeout(function(){
+                    $.afui.launch();
+                },1500);
+            });
+ function sureoddsFunc() {
+   var updiv = document.getElementById("gamedetails");
+     $.afui.toast("Welcome francis! sureoddsFunc");
+     var display;
+     var index, len;
+
+     $.ajax({
+         dataType: "json",
+         data: display,
+         url: "http://localhost/ITPROJECT/XDKTESTPHP/todaysaodds.php",
+         cache: false,
+         method: 'GET',
+         success: function(rsp) {
+   $.afui.toast(rsp);
+   //alert(rsp);
+   var text = "";
+   var i;
+   for (i = 0; i < rsp.length; i++) {
+            var Team=rsp[i].Team;
+            var league=rsp[i].league;
+            var pick=rsp[i].pick;
+            var gamedate=rsp[i].gamedate;
+              var odds=rsp[i].odds;
+              var id=rsp[i].id;
+              text +='<div style="width:100%;height:auto;background:#FFFFFF;border-radius:3px; box-shadow: 0px 0px 4px black" id="'+ league + '" onclick="eventListener(this.id)">' + ' <b style="font-family:times new romans;font-size:18px;">'+ rsp[i].gamedate + '</b> <br>' + rsp[i].league + '<br><b style="color:blue;">' + rsp[i].Team +'</b><br><b style="color:blue;">Pick:&nbsp;' + rsp[i].pick +'</b>&nbsp;&nbsp;&nbsp;<b style="color:red">WOON</b></div><hr> &nbsp;';
+    updiv.innerHTML=text;
+
+                 }
+
+
+           }
+
+
+
+});
+
+ }
+
+ function highoddsFunc() {
+   var updiv = document.getElementById("highodds-details");
+     $.afui.toast("Welcome francis! Can Get data now highoddsFunc");
+     var display;
+     var index, len;
+
+     $.ajax({
+         dataType: "json",
+         data: display,
+         url: "http://localhost/ITPROJECT/XDKTESTPHP/todaysaodds.php",
+         cache: false,
+         method: 'GET',
+         success: function(rsp) {
+   $.afui.toast(rsp);
+   //alert(rsp);
+   var text = "";
+   var i;
+   for (i = 0; i < rsp.length; i++) {
+            var Team=rsp[i].Team;
+            var league=rsp[i].league;
+            var pick=rsp[i].pick;
+            var gamedate=rsp[i].gamedate;
+              var odds=rsp[i].odds;
+              var id=rsp[i].id;
+              text +='<div style="width:100%;height:auto;background:#FFFFFF;border-radius:3px; box-shadow: 0px 0px 4px black" id="'+ league + '" onclick="eventListener(this.id)">' + ' <b style="font-family:times new romans;font-size:18px;">'+ rsp[i].gamedate + '</b> <br>' + rsp[i].league + '<br><b style="color:blue;">' + rsp[i].Team +'</b><br><b style="color:blue;">Pick:&nbsp;' + rsp[i].pick +'</b>&nbsp;&nbsp;&nbsp;<b style="color:red">WOON</b></div><hr> &nbsp;';
+    updiv.innerHTML=text;
+
+                 }
+
+
+           }
+
+
+
+ });
+
+ }
+ function todaysoddsFunc() {
+   var updiv = document.getElementById("todaysodds-details");
+     $.afui.toast("Welcome francis! Can Get data now todaysaoddsFunc");
+     var display;
+     var index, len;
+
+     $.ajax({
+         dataType: "json",
+         data: display,
+         url: "http://localhost/ITPROJECT/XDKTESTPHP/todaysaodds.php",
+         cache: false,
+         method: 'GET',
+         success: function(rsp) {
+   $.afui.toast(rsp);
+   //alert(rsp);
+   var text = "";
+   var i;
+   for (i = 0; i < rsp.length; i++) {
+            var Team=rsp[i].Team;
+            var league=rsp[i].league;
+            var pick=rsp[i].pick;
+            var gamedate=rsp[i].gamedate;
+              var odds=rsp[i].odds;
+              var id=rsp[i].id;
+              text +='<div style="width:100%;height:auto;background:#FFFFFF;border-radius:3px; box-shadow: 0px 0px 4px black" id="'+ league + '" onclick="eventListener(this.id)">' + ' <b style="font-family:times new romans;font-size:18px;">'+ rsp[i].gamedate + '</b> <br>' + rsp[i].league + '<br><b style="color:blue;">' + rsp[i].Team +'</b><br><b style="color:blue;">Pick:&nbsp;' + rsp[i].pick +'</b>&nbsp;&nbsp;&nbsp;<b style="color:red">WOON</b></div><hr> &nbsp;';
+    updiv.innerHTML=text;
+
+                 }
+
+
+           }
+
+
+
+ });
+
+ }
+
+
+
+     function home(){
+
+         $.afui.loadContent("#landing",false,false,"fade");
+     }
+     function highodds(){
+
+         $.afui.loadContent("#highodds-page",false,false,"fade");
+     }
+     function sureodds(){
+
+         $.afui.loadContent("#sureodds-page",false,false,"fade");
+     }
+
+     function telegram(){
+
+         $.afui.loadContent("#telegram-page",false,false,"fade");
+     }
+
+
+
+    function todaysaodds() {
+
+      $.afui.loadContent("#todaysodds-page",false,false,"fade");
+      //  showInterstitialFunc();
+    }
+
+     function signup() {
+
+        $.afui.loadContent("#signup",false,false,"fade");
+     }
+    function main() {
+
+        $.afui.loadContent("#mainpage",false,false,"fade");
+     }
+     /* checking authentication details to login */
+
+    /* registration details */
+
+
+/*
+opening sidebamenu
+*/
+
+    function openNav() {
+              document.getElementById("mySidenav").style.width = "60%";
+    }
+
+    function closeNav() {
+
+             document.getElementById("mySidenav").style.width = "0";
+    }
+
+                /*
+                opening swahilibox box webpage function
+                */
+    function openweb() {
+        "use strict";
+
+        try {
+
+           window.open('http://swahilibox.co.ke', '_blank', 'location=yes');
+
+        } catch (e) {
+
+             $.afui.toast("failed to open webpage");
+          }
+
+
+    }
+
+    /*
+opening twitter with a browser
+*/
+
+      function social_share() {
+
+        //Parameters:
+        //Message, Subject, File Path(relative, File URL or file://), URL, success callback, fail callback
+        window.plugins.socialsharing.share("Swahilibox","Download Swahilibox app",null,"http:/om",function(result){
+            alert('result: ' + result);
+        }, function(result){
+            alert('error: ' + result);
+        });
+    }
+    /* exit from the app */
+     function exitFromApp(){
+         var exit=confirm("Are you sure you want to exit from this app?");
+         if (exit==true){
+              navigator.app.exitApp();
+         }
+         else{
+              $.afui.loadContent("#landing",false,false,"fade");
+         }
+
+ }
+ function opentelegram() {
+        "use strict";
+
+        try {
+          //showInterstitialFunc();
+           window.open('http://smartsoftexperts.co.ke', '_blank', 'location=yes');
+           $.afui.loadContent("#telegram-page",false,false,"fade");
+
+        } catch (e) {
+
+             $.afui.toast("Failed to open Telegram");
+               $.afui.loadContent("#telegram-page",false,false,"fade");
+          }
+
+
+    }
+
+function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        highoddsFunc();
+        todaysoddsFunc();
+        sureoddsFunc();
+        //alert("Welcome francis");
+        //  $.afui.toast("Welcome francis");
+        //alert("Welcome francis! device is ready");
+    }
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+    //  alert("Welcome francis");
+    //    $.afui.toast("Welcome francis");
+        //getdata();
+        initAd();
+        showBannerFunc();
+        showInterstitialFunc();
+        // Add to index.js or the first page that loads with your app.
+// sending push notification.
+  // Enable to debug issues.
+  // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+
+  var notificationOpenedCallback = function(jsonData) {
+      alert("Notification received:\n" + JSON.stringify(jsonData));
+    console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+  };
+
+  window.plugins.OneSignal
+    .startInit("2d79e957-bdf2-4446-a7a7-d5eb51441f46")
+    .handleNotificationOpened(notificationOpenedCallback)
+    .endInit();
+   window.plugins.OneSignal.setSubscription(true);
+   window.plugins.OneSignal.enableNotificationWhenActive(true);
+
+    }
+
+function forgetpassword(){
+    $.afui.loadContent("#forgetpass",false,false,"fade");
+}
+function forgetpass(){
+    var email=document.getElementById("forgotemail").value;
+      if(email ==''){
+           var passerror={ message:"Enter Email",
+                                position:"tc",
+                                delay:2000,
+                                autoClose:true,
+                                type:"error",
+                            };
+                  $.afui.toast(passerror);
+
+      }
+}
+//initialize the goodies
+function initAd(){
+        if ( window.plugins && window.plugins.AdMob ) {
+            var ad_units = {
+                ios : {
+                    banner: 'ca-app-pub-xxxxxxxxxxx/xxxxxxxxxxx',		//PUT ADMOB ADCODE HERE
+                    interstitial: 'ca-app-pub-xxxxxxxxxxx/xxxxxxxxxxx'	//PUT ADMOB ADCODE HERE
+                },
+                android : {
+                    banner: 'ca-app-pub-3940256099942544/6300978111',		//PUT ADMOB ADCODE HERE
+                    interstitial: 'ca-app-pub-3940256099942544/1033173712'	//PUT ADMOB ADCODE HERE
+                }
+            };
+            var admobid = ( /(android)/i.test(navigator.userAgent) ) ? ad_units.android : ad_units.ios;
+
+            window.plugins.AdMob.setOptions( {
+                publisherId: admobid.banner,
+                interstitialAdId: admobid.interstitial,
+                adSize: window.plugins.AdMob.AD_SIZE.SMART_BANNER,	//use SMART_BANNER, BANNER, LARGE_BANNER, IAB_MRECT, IAB_BANNER, IAB_LEADERBOARD
+                bannerAtTop: false, // set to true, to put banner at top
+                overlap: true, // banner will overlap webview
+                offsetTopBar: false, // set to true to avoid ios7 status bar overlap
+                isTesting: false, // receiving test ad
+                autoShow: true // auto show interstitial ad when loaded
+            });
+
+            registerAdEvents();
+        } else {
+            alert( 'admob plugin not ready' );
+        }
+}
+//functions to allow you to know when ads are shown, etc.
+function registerAdEvents() {
+        document.addEventListener('onReceiveAd', function(){});
+        document.addEventListener('onFailedToReceiveAd', function(data){});
+        document.addEventListener('onPresentAd', function(){});
+        document.addEventListener('onDismissAd', function(){ });
+        document.addEventListener('onLeaveToAd', function(){ });
+        document.addEventListener('onReceiveInterstitialAd', function(){ });
+        document.addEventListener('onPresentInterstitialAd', function(){ });
+        document.addEventListener('onDismissInterstitialAd', function(){ });
+    }
+//display the banner
+function showBannerFunc(){
+	 alert( 'admob plugin not ready' );
+    window.plugins.AdMob.createBannerView();
+
+}
+//display the interstitial
+function showInterstitialFunc(){
+	 alert( 'admob plugin not ready' );
+    window.plugins.AdMob.createInterstitialView();	//get the interstitials ready to be shown and show when it's loaded.
+    window.plugins.AdMob.requestInterstitialAd();
+}
+
+        </script>
+
+    </head>
+
+    <body id="afui" class="v2" onload="onLoad()">
+
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <div class="upage vertical-col left view" id="mainpage" data-header="none" data-footer="none" data-trasnsition="pop" style="color:black;">
+            <div class="pages">
+                <div class="upage-outer">
+                    <div class="upage-content vertical-col panel ac0" id="uib_page_1">
+                      <header class="container-group outer-element uib_w_1" data-uib="app_framework/header" data-ver="3" id="af-header-0" style="background:#BB7933 ;position:fixed;">
+
+                              <h1 style="color:black;margin-top:3px;">GET SURE ODDS</h1>
+
+                              <img src="images/notification.png" style="float:right;height:42px;width:42px;" id="back">
+                              <img src="images/share.png" style="float:right;height:42px;width:42px;" id="back">
+
+                              <div class="widget-container wrapping-col single-centered"> </div>
+                              <div class="widget-container content-area horiz-area wrapping-col header-left">
+
+                                             <img src="images/logo.jpg" id="back" style="height:42px;width:42px;">
+
+                              </div>
+
+                              <div class="widget-container content-area horiz-area wrapping-col header-right"></div>
+                      </header>
+                        <center>
+
+                            <br>
+
+                    <br><button id="" onclick="sureodds()" class="button btn-primary">2 + SURE ODDS</button>
+                    <!--<li><a href="#signup" class="icon pencil" style="text-align:center">Register</a></li>-->
+
+
+                            <br>
+
+
+                            <br>
+
+
+                              <button id="" onclick="todaysaodds()" class="button btn-primary"> TODAYS ODDS </button><br><br>
+                              <button id="" onclick="highodds()" class="button btn-primary"> HIGH ODDS </button>
+                            <br>
+                            <br>
+                            <button id="" onclick="opentelegram()" class="button btn-" style="background:#3395BB;"><img src="images/telegram.png" height="30px" width="60px"/><br>TELEGRAM </button>
+
+
+                            <!--<button id="signupbtn" onclick="signup()">Sign Up</button>-->
+                            <br>
+
+                        </center>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="upage vertical-col left view" id="sureodds-page" data-header="af-header-0" data-footer="none" style="background:white;overflow:auto;">
+            <header class="container-group outer-element uib_w_1" data-uib="app_framework/header" data-ver="3" id="af-header-0" style="background:#BB7933 ;position:fixed;">
+
+                    <h1 style="color:black;margin-top:3px;">2 + SURE ODDs</h1>
+                    <img src="images/notification.png" style="float:right;height:42px;width:42px;" id="back">
+                    <img src="images/share.png" style="float:right;height:42px;width:42px;" id="back">
+
+                    <div class="widget-container wrapping-col single-centered"> </div>
+                    <div class="widget-container content-area horiz-area wrapping-col header-left">
+                           <a href="#mainpage">
+                                   <img src="images/back1.png" id="back">
+                           </a>
+                    </div>
+
+                    <div class="widget-container content-area horiz-area wrapping-col header-right"></div>
+            </header>
+
+                <br>
+                <br>
+
+         <center>
+
+           <br>
+           <div id="gamedetails">Game details will be vomited here</div>
+           <br>
+         <!-- <p><a href="#" onclick="forgetpassword()">Forget password</a></p>-->
+
+            </center>
+
+        </div>
+        <div class="upage vertical-col left view" id="highodds-page" data-header="af-header-0" data-footer="none" style="background:white;overflow:auto;">
+            <header class="container-group outer-element uib_w_1" data-uib="app_framework/header" data-ver="3" id="af-header-0" style="background:#BB7933 ;position:fixed;">
+
+                    <h1 style="color:black;margin-top:3px;">HIGH ODDS</h1>
+                      <img src="images/notification.png" style="float:right;height:42px;width:42px;" id="back">
+                      <img src="images/share.png" style="float:right;height:42px;width:42px;" id="back">
+
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col header-left">
+                           <a href="#mainpage">
+                                   <img src="images/back1.png" id="back">
+                           </a>
+                    </div>
+
+                    <div class="widget-container content-area horiz-area wrapping-col header-right"></div>
+            </header>
+
+                <br>
+                <br>
+
+         <center>
+
+           <br>
+           <div id="highodds-details">Game details will be vomited here</div>
+           <br>
+         <!-- <p><a href="#" onclick="forgetpassword()">Forget password</a></p>-->
+
+            </center>
+
+        </div>
+
+        <div class="upage vertical-col left view" id="todaysodds-page" data-header="af-header-0" data-footer="none" style="background:white;overflow:auto;">
+            <header class="container-group outer-element uib_w_1" data-uib="app_framework/header" data-ver="3" id="af-header-0" style="background:#BB7933 ;position:fixed;">
+
+                    <h1 style="color:black;margin-top:3px;">TODAYS ODDS</h1>
+                    <img src="images/notification.png" style="float:right;height:42px;width:42px;" id="back">
+                    <img src="images/share.png" style="float:right;height:42px;width:42px;" id="back">
+
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col header-left">
+                           <a href="#mainpage">
+                                   <img src="images/back1.png" id="back">
+                           </a>
+                    </div>
+
+                    <div class="widget-container content-area horiz-area wrapping-col header-right"></div>
+            </header>
+
+                <br>
+                <br>
+
+         <center>
+
+           <br>
+           <div id="todaysodds-details">Game details will be vomited here</div>
+           <br>
+         <!-- <p><a href="#" onclick="forgetpassword()">Forget password</a></p>-->
+
+            </center>
+
+        </div>
+
+
+        <div class="upage vertical-col left view" id="telegram-page" data-header="none" data-footer="none" style="background:white;overflow:auto;">
+            <div style="background:#D2691E;position:fixed">
+
+              <img src="images/notification.png" style="float:right;height:42px;width:42px;" id="back">
+              <img src="images/share.png" style="float:right;height:42px;width:42px;" id="back">
+                <div class="widget-container content-area horiz-area wrapping-col header-left">
+                    <a href="#mainpage">
+                        <img src="images/back1.png" id="back">
+                    </a>
+                </div>
+
+            </div>
+
+            <center>
+                <div style="font-family:sans serif;font-size:17px;">
+                    <br>
+                    <br>
+                    <br>
+                  <b> Webpage not available</b> <br>
+                  The page cannot be found.<br>
+The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+                </div>
+
+                <br>
+                <br>
+            </center>
+
+        </div>
+
+
+
+    </body>
+
+</html>

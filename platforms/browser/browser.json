@@ -1,0 +1,66 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-admob-sdklibs": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    },
+    "cordova-plugin-admob-simple": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "com.xdktest.android"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "file": "plugins/cordova-plugin-admob-simple/www/AdMob.js",
+      "id": "cordova-plugin-admob-simple.AdMob",
+      "pluginId": "cordova-plugin-admob-simple",
+      "clobbers": [
+        "window.plugins.AdMob"
+      ]
+    },
+    {
+      "file": "plugins/es6-promise-plugin/www/promise.js",
+      "id": "es6-promise-plugin.Promise",
+      "pluginId": "es6-promise-plugin",
+      "runs": true
+    },
+    {
+      "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+      "id": "cordova-plugin-x-socialsharing.SocialSharing",
+      "pluginId": "cordova-plugin-x-socialsharing",
+      "clobbers": [
+        "window.plugins.socialsharing"
+      ]
+    },
+    {
+      "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
+      "id": "onesignal-cordova-plugin.OneSignal",
+      "pluginId": "onesignal-cordova-plugin",
+      "clobbers": [
+        "OneSignal"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-admob-sdklibs": "2.1.6",
+    "cordova-plugin-admob-simple": "3.3.4",
+    "es6-promise-plugin": "4.2.2",
+    "cordova-plugin-x-socialsharing": "5.3.2",
+    "onesignal-cordova-plugin": "2.3.1"
+  }
+}
