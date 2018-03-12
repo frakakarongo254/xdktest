@@ -23,10 +23,10 @@
     <preference name="android-minSdkVersion" value="15" />
 	<allow-intent href="market:*" />
 		
-              <icon src="images/LOG2.PNG" density="mdpi" />
-              <icon src="images/LOG2.PNG" density="hdpi" />
+              <icon src="res/LOG2.PNG" density="mdpi" />
+              <icon src="res/LOG2.PNG" density="hdpi" />
               
-			  <splash src="images/LOG2.PNG" density="land-hdpi"/>
+			  <splash src="res/LOG2.PNG" density="land-hdpi"/>
     </platform>
 	
     <engine name="android" spec="~7.0.0" />
