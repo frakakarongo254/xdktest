@@ -15,6 +15,9 @@
     },
     "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "com.xdktest.android"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.xdktest.android"
     }
   },
   "dependent_plugins": {

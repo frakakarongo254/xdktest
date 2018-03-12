@@ -36,6 +36,7 @@
     <access origin="*" />
     <gap:plugin name="cordova-plugin-admob-simple" source="npm" />
     <gap:plugin name="onesignal-cordova-plugin" source="npm" />
+    <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="false" />
@@ -49,4 +50,5 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
+    <preference name="android-minSdkVersion" value="14" />
 </widget>

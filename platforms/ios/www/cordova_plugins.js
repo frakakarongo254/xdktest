@@ -22,7 +22,8 @@ module.exports.metadata =
 {
   "cordova-admob-sdklibs": "2.1.6",
   "cordova-plugin-admob-simple": "3.3.4",
-  "onesignal-cordova-plugin": "2.3.1"
+  "onesignal-cordova-plugin": "2.3.1",
+  "cordova-plugin-whitelist": "1.3.3"
 };
 // BOTTOM OF METADATA
 });

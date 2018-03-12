@@ -11,4 +11,6 @@
     <access origin="*" />
     <gap:plugin name="cordova-plugin-admob-simple" source="npm" />
     <gap:plugin name="onesignal-cordova-plugin" source="npm" />
+    <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+    <preference name="android-minSdkVersion" value="14" />
 </widget>

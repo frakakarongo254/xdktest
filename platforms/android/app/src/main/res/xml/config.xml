@@ -7,6 +7,13 @@
     <feature name="OneSignalPush">
         <param name="android-package" value="com.plugin.gcm.OneSignalPush" />
     </feature>
+    <feature name="SocialSharing">
+        <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name>xdktest</name>
     <description>
         A blank PhoneGap app.
@@ -18,8 +25,8 @@
     <access origin="*" />
     <gap:plugin name="cordova-plugin-admob-simple" source="npm" />
     <gap:plugin name="onesignal-cordova-plugin" source="npm" />
+    <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+    <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
-    <feature name="SocialSharing">
-        <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
-    </feature>
+    <preference name="android-minSdkVersion" value="15" />
 </widget>
