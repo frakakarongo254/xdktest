@@ -176,6 +176,23 @@ $.getJSON('http://frakaapps.epizy.com/singleodds.php?callback=?',function(res){
 });
 
  }
+function testfunc(){
+  $.getJSON('http://frakaapps.epizy.com/singleodds.php?callback=?',function(res){
+   
+	var text = "";
+  var i;
+  for (i = 0; i < res.length; i++) {
+         
+             text +='<div style="width:100%;height:auto;background:#FFFFFF;border-radius:3px; box-shadow: 0px 0px 4px black" >' + '  <br>' + res[i].league + '<br><b style="color:blue;">' + res[i].Team +'</b><br><b style="color:blue;">Pick:&nbsp;' + res[i].pick +'</b>&nbsp;&nbsp;&nbsp;<b style="color:red">' + res[i].status +'</b></div><hr>';
+   
+   //text +='<div>'+ res[i].fullAdress +'<br>'+ res[i].fullName +'</div>';
+   document.getElementById("demodiv").innerHTML = text;
+
+                }
+});
+
+
+}
 
 
 
@@ -428,8 +445,9 @@ function showInterstitialFunc(){
                              
                             <br>
                             <br>
+							 <button onclick="testfunc()" class="button btn-danger">Testing</button><br>
                             <button id="" onclick="opentelegram()" class="button btn-" style="background:#3395BB;"><img src="images/telegram.png" height="30px" width="60px"/><br>TELEGRAM </button>
-                           
+                           <div id="demodiv"></div>
                            
                             <br>
                     </div>
