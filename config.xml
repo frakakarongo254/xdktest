@@ -13,8 +13,8 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-navigation href="*" />
-    <preference name="android-minSdkVersion" value="14" />
-    <plugin name="cordova-plugin-whitelist" />
+  
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="cordova-plugin-admob-simple" source="npm" />
     <gap:plugin name="onesignal-cordova-plugin" source="npm" />
     <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
@@ -23,10 +23,10 @@
     <preference name="android-minSdkVersion" value="15" />
 	<allow-intent href="market:*" />
 		
-              <icon src="res/114.png" density="mdpi" />
-              <icon src="res/96.png" density="hdpi" />
+              <icon src="res/320.png" density="mdpi" />
+              <icon src="res/320.png" density="hdpi" />
               
-			  <splash src="res/114.png" density="land-hdpi"/>
+			  <splash src="res/320.png" density="land-hdpi"/>
     </platform>
 	
     <engine name="android" spec="~7.0.0" />

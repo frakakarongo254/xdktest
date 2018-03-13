@@ -177,6 +177,7 @@ $.getJSON('http://frakaapps.epizy.com/singleodds.php?callback=?',function(res){
 
  }
 function testfunc(){
+ alert("testing connection");
   $.getJSON('http://frakaapps.epizy.com/singleodds.php?callback=?',function(res){
    
 	var text = "";
@@ -203,12 +204,12 @@ function testfunc(){
      function singleodds(){
 
          $.afui.loadContent("#highodds-page",false,false,"fade");
-		 showInterstitialFunc();
+		 //showInterstitialFunc();
      }
      function sureodds(){
 
          $.afui.loadContent("#sureodds-page",false,false,"fade");
-		 showInterstitialFunc();
+		// showInterstitialFunc();
      }
 
      function telegram(){
@@ -270,15 +271,7 @@ function testfunc(){
 
 
     }
-    function backbuttonFunc(){
-        if(document.getElementById('#mainpage')){
-           e.preventDefault();
-           navigator.app.exitApp();
-       }
-       else {
-           navigator.app.backHistory()
-       }
-    }
+   
 
 function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
@@ -301,10 +294,22 @@ function onLoad() {
 		todaysoddsFunc();
         twoPlusOddsFunc();
 		singleoddsFunc();
-        backbuttonFunc();
+        //backbuttonFunc();
         initAd();
         showBannerFunc();
         showInterstitialFunc();
+		// register backbutton event
+		 document.addEventListener("backbutton", function(e){
+       if(document.getElementById('#mainpage')){
+           e.preventDefault();
+           navigator.app.exitApp();
+       }
+       else {
+           navigator.app.backHistory();
+       }
+    }, false);
+	   
+		
         // Add to index.js or the first page that loads with your app.
 // sending push notification.
   // Enable to debug issues.
@@ -349,7 +354,7 @@ function initAd(){
                 bannerAtTop: false, // set to true, to put banner at top
                 overlap: true, // banner will overlap webview
                 offsetTopBar: false, // set to true to avoid ios7 status bar overlap
-                isTesting: false, // receiving test ad
+                isTesting: true, // receiving test ad
                 autoShow: true // auto show interstitial ad when loaded
             });
 
@@ -404,12 +409,12 @@ function showInterstitialFunc(){
                         <span onclick="openNav()"><button style="margin-top:8px;margin-left:5px;margin-bottom:8px;background-color:;"><img src="images/menu1.png" height="30px" width="30px"></button></span>
 
 
-                        <img src="images/LOG2.PNG" style="float:right;height:42px;width:42px;" id="back">
+                        <img src="images/logo2.png" style="float:right;height:42px;width:42px;" id="back">
                         <div id="mySidenav" class="sidenav">
 
                          <div class="panel active" id="navPage1" data-title="Foobar">
                              <ul style="width:100%">
-                                <li style="background:#BB7933"><a href="#" onclick="closeNav()"> <img src="images/LOG2.PNG" style="float:;height:40px;width:40px;" id=""></a></li>
+                                <li style="background:#BB7933"><a href="#" onclick="closeNav()"> <img src="images/logo2.png" style="float:;height:40px;width:40px;" id=""></a></li>
                              </ul>
                         <ul class="list" style="width:100%">
 
@@ -433,12 +438,10 @@ function showInterstitialFunc(){
 					<button id="hidebutton" onclick="sureodds()" class="button btn-primary">2 + SURE ODDS</button>
                     <!--<li><a href="#signup" class="icon pencil" style="text-align:center">Register</a></li>-->
 
-
                             <br>
 
 
                             <br>
-
 
                               <button id="" onclick="todaysaodds()" class="button btn-primary"> TODAYS ODDS </button><br><br>
                               <button id="" onclick="singleodds()" class="button btn-primary"> SINGLE ODDS </button><br>
