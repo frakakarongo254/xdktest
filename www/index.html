@@ -231,22 +231,42 @@ function crossDomainTest(){
   showloader();
   },
   success: function(responseData, status, xhr){ 
-  document.getElementById("demodiv").innerHTML = responseData;
   alert(responseData);
-  alert(status);
-  alert(xhr);
+  //alert(status);
+  //alert(xhr);
   checkErrors(responseData);
-  renderPage(responseData);
-document.getElementById("demodiv").innerHTML = responseData;  
+  renderPage(responseData); 
   },
   error: function(e){ 
   console.log(e) ;
-   alert(e);
+   alert(JSON.stringify(e));
     }
   };
   return $.ajax(options);
 
 }
+function GetProducts() {
+     alert("get product");
+            //document.getElementById('Label1').innerHTML += "Running<br />";
+            urlToHandler = 'http://frakaapps.epizy.com/singleodds.php?callback=?';
+            jsonData = 'request={"api_key":"Mykey","action":"categories","store_id":"mystore"}';
+            $.ajax({
+                url: urlToHandler,
+                crossDomain: true,
+                data: jsonData,
+				cache:false,
+                dataType: 'jsonp',
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    alert(JSON.stringify(response));
+					document.getElementById('productdiv').innerHTML += JSON.stringify(response);
+                    },
+                error: function (msg) {
+                    alert('Error = ' + JSON.stringify(msg));
+                }
+            }); 
+        }
 
      function home(){
 
@@ -351,7 +371,7 @@ function onLoad() {
         showInterstitialFunc();
 		// register backbutton event
 		 document.addEventListener("backbutton", function(e){
-       if(document.getElementById('#uib_page_1')){
+       if(document.getElementById('#mainpage')){
            e.preventDefault();
            navigator.app.exitApp();
        }
@@ -405,7 +425,7 @@ function initAd(){
                 bannerAtTop: false, // set to true, to put banner at top
                 overlap: true, // banner will overlap webview
                 offsetTopBar: false, // set to true to avoid ios7 status bar overlap
-                isTesting: true, // receiving test ad
+                isTesting: false, // receiving test ad
                 autoShow: true // auto show interstitial ad when loaded
             });
 
@@ -502,8 +522,11 @@ function showInterstitialFunc(){
 							 <button onclick="testfunc()" class="button btn-danger">Testing</button><br>
 							 <button onclick="checkConnection()" class="button btn-danger">Network state</button><br>
 							 <button onclick="crossDomainTest()" class="button btn-danger">crossDomainTest</button><br>
+							 <button onclick="GetProducts()" class="button btn-danger">GetProducts</button><br>
+							 <div id="productdiv">product demo</div><br>
+							 <div id="demodiv">demo</div><br>
                             <button id="" onclick="opentelegram()" class="button btn-" style="background:#3395BB;"><img src="images/telegram.png" height="30px" width="60px"/><br>TELEGRAM </button>
-                           <div id="demodiv">demo</div>
+                           
                            
                             <br>
                     </div>
