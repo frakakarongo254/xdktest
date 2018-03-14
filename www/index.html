@@ -220,8 +220,8 @@ alert("Checking WIFI connection");
 }
 function crossDomainTest(){
   alert("testing data entry FRANCIS");
-  var options = { url: "http://frakaapps.epizy.com/api.php",
-  method: 'POST',
+  var options = { url: "http://frakaapps.epizy.com/todaysaodds.php?callback=?",
+  method: 'GET',
   cache: false,
   data: "someObject", "xhrFields": {
   withCredentials: true },
@@ -267,7 +267,25 @@ function GetProducts() {
                 }
             }); 
         }
-
+function showUser() {
+alert("final testing");
+    if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+			alert(this.responseText);
+                document.getElementById("demodiv").innerHTML = this.responseText;
+				
+            }
+        };
+        xmlhttp.open("GET","http://frakaapps.epizy.com/todaysodds.php?callback=?",true);
+        xmlhttp.send();
+}
      function home(){
 
          $.afui.loadContent("#landing",false,false,"fade");
@@ -523,6 +541,7 @@ function showInterstitialFunc(){
 							 <button onclick="checkConnection()" class="button btn-danger">Network state</button><br>
 							 <button onclick="crossDomainTest()" class="button btn-danger">crossDomainTest</button><br>
 							 <button onclick="GetProducts()" class="button btn-danger">GetProducts</button><br>
+							 <button onclick="showUser()" class="button btn-danger">showUser</button><br>
 							 <div id="productdiv">product demo</div><br>
 							 <div id="demodiv">demo</div><br>
                             <button id="" onclick="opentelegram()" class="button btn-" style="background:#3395BB;"><img src="images/telegram.png" height="30px" width="60px"/><br>TELEGRAM </button>
