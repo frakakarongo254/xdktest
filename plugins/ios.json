@@ -15,6 +15,9 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.xdktest.android"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.xdktest.android"
     }
   },
   "dependent_plugins": {

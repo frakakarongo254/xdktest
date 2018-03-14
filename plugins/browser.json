@@ -17,7 +17,10 @@
       "PACKAGE_NAME": "com.xdktest.android"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.xdktest.android"
+      "PACKAGE_NAME": "com.BetinInvest.android"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.BetinInvest.android"
     }
   },
   "dependent_plugins": {

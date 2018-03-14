@@ -8,8 +8,10 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="app_framework/3.0/af.ui.css" data-ver="2">
         <link rel="stylesheet" type="text/css" href="app_framework/3.0/icons.min.css">
-        <title>Swahilibox App</title>
+        <title>Betin Investor</title>
+		
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Security-Policy" content="default-src *; style-src *  'unsafe-inline'; script-src *  'unsafe-inline'; media-src *">
         <link rel="stylesheet" type="text/css" href="lib/appframework/icons.css">
         <link rel="stylesheet" type="text/css" href="lib/appframework/af.ui.css">
         <link rel="stylesheet" href="css/design.css" type="text/css">
@@ -126,173 +128,110 @@ document.getElementById('hideDiv').style.visibility = 'visible';
              document.getElementById("mySidenav").style.width = "0";
     }
 
- function sureoddsFunc() {
-   var updiv = document.getElementById("gamedetails");
-     //$.afui.toast("Welcome francis! sureoddsFunc");
-     var display;
-     var index, len;
+ function twoPlusOddsFunc() {
+$.getJSON('http://frakaapps.epizy.com/twoplusodds.php?callback=?',function(res){
+   
+	var text = "";
+  var i;
+  for (i = 0; i < res.length; i++) {
+             text +='<div style="width:100%;height:auto;background:#FFFFFF;border-radius:3px; box-shadow: 0px 0px 4px black" onclick="eventListener(this.id)">' + ' <b style="font-family:times new romans;font-size:18px;">'+ res[i].gamedate + '</b> <br>' + res[i].leagueA + '<br><b style="color:blue;">' + res[i].TeamA +'</b><br><b style="color:blue;">&nbsp;' + res[i].pickA +'</b>&nbsp;&nbsp;&nbsp;<br>' + '<br>' + res[i].leagueB + '<br><b style="color:blue;">' + res[i].TeamB +'</b><br><b style="color:blue;">Pick:&nbsp;' + res[i].pickB +'</b>&nbsp;&nbsp;&nbsp;<br>' + res[i].leagueC + '<br><b style="color:blue;">' + res[i].TeamC +'</b><br><b style="color:blue;">&nbsp;' + res[i].pickC +'</b>&nbsp;&nbsp;&nbsp;<br><b style="color:black"> <br>Total ODDS :  ' + res[i].odds + ' </b><b style="color:red"> ' + res[i].status +'</b></div><hr> &nbsp;';
+    
+   document.getElementById("gamedetails").innerHTML = text;
 
-     $.ajax({
-         dataType: "json",
-         data: display,
-         url: "http://localhost/ITPROJECT/XDKTESTPHP/sureodds.php",
-         cache: false,
-         method: 'GET',
-         success: function(rsp) {
-   $.afui.toast(rsp);
-   //alert(rsp);
-   var text = "";
-   var i;
-   for (i = 0; i < rsp.length; i++) {
-   $.afui.toast("faile rsp A");
-            var TeamA=rsp[i].TeamA;
-            $.afui.toast(rsp[i].TeamA);
-            var leagueA=rsp[i].leagueA;
-           var pick=rsp[i].pickA;
-            var gamedate=rsp[i].gamedate;
-              var odds=rsp[i].odds;
-              var id=rsp[i].gameid;
-              text +='<div style="width:100%;height:auto;background:#FFFFFF;border-radius:3px; box-shadow: 0px 0px 4px black" id="'+ leagueA + '" onclick="eventListener(this.id)">' + ' <b style="font-family:times new romans;font-size:18px;">'+ rsp[i].gamedate + '</b> <br>' + rsp[i].leagueA + '<br><b style="color:blue;">' + rsp[i].TeamA +'</b><br><b style="color:blue;">&nbsp;' + rsp[i].pickA +'</b>&nbsp;&nbsp;&nbsp;<br>' + '<br>' + rsp[i].leagueB + '<br><b style="color:blue;">' + rsp[i].TeamB +'</b><br><b style="color:blue;">Pick:&nbsp;' + rsp[i].pickB +'</b>&nbsp;&nbsp;&nbsp;<br>' + rsp[i].leagueC + '<br><b style="color:blue;">' + rsp[i].TeamC +'</b><br><b style="color:blue;">&nbsp;' + rsp[i].pickC +'</b>&nbsp;&nbsp;&nbsp;<br><b style="color:black"> <br>Total ODDS :  ' + rsp[i].odds + ' </b><b style="color:red"> ' + rsp[i].status +'</b></div><hr> &nbsp;';
-    updiv.innerHTML=text;
-
-                 }
-
-
-           }
-
-
-
+                }
 });
 
  }
 
-function testFunc(){
-  alert("success Kihiko");
-  //alert("success francis");
-        var details='francis';
 
-              $.ajax({
-                    type: "POST",
-                    url: "http://frakaapps.epizy.com/index.php",
-                    data: details,
-                    cache: false,
-                    success: function(data) {
-                       $.afui.toast("Invalid username or password!");
-                                var num=data;
-                                alert(data);
-
-                       }
-
-            });
-
-         return false;
-
-
-
-}
- function highoddsFuncc() {
-  var updiv = document.getElementById("todaysodds-details");
-    $.afui.toast("Welcome francis! Can Get data now todaysaoddsFunc");
-    var display;
-    var index, len;
-
-    $.ajax({
-        dataType: "json",
-        data: display,
-        url: "http://frakaapps.epizy.com/index.php",
-        cache: false,
-        method: 'GET',
-        success: function(rsp) {
-          alert(rsp);
-     var datetext = "";
-
-  var datediv = document.getElementById("todaysdate");
-                 datetext += '<b>'+ rsp[0].gamedate +'</b>';
-          datediv.innerHTML=datetext;
-  var text = "";
+ function singleoddsFunc() {
+ 
+$.getJSON('http://frakaapps.epizy.com/singleodds.php?callback=?',function(res){
+   
+	var text = "";
   var i;
-  for (i = 0; i < rsp.length; i++) {
-           var Team=rsp[i].Team;
-           var league=rsp[i].league;
-           var pick=rsp[i].pick;
-           var gamedate=rsp[i].gamedate;
-             var odds=rsp[i].odds;
-             var id=rsp[i].id;
-
-             text +='<div style="width:100%;height:auto;background:#FFFFFF;border-radius:3px; box-shadow: 0px 0px 4px black" id="'+ league + '" onclick="eventListener(this.id)">' + '  <br>' + rsp[i].league + '<br><b style="color:blue;">' + rsp[i].Team +'</b><br><b style="color:blue;">Pick:&nbsp;' + rsp[i].pick +'</b>&nbsp;&nbsp;&nbsp;<b style="color:red">WOON</b></div><hr> &nbsp;';
-   updiv.innerHTML=text;
+  for (i = 0; i < res.length; i++) {
+         
+             text +='<div style="width:100%;height:auto;background:#FFFFFF;border-radius:3px; box-shadow: 0px 0px 4px black" >' + '  <br>' + res[i].league + '<br><b style="color:blue;">' + res[i].Team +'</b><br><b style="color:blue;">Pick:&nbsp;' + res[i].pick +'</b>&nbsp;&nbsp;&nbsp;<b style="color:red">' + res[i].status +'</b></div><hr>';
+   
+   //text +='<div>'+ res[i].fullAdress +'<br>'+ res[i].fullName +'</div>';
+   document.getElementById("single-details").innerHTML = text;
 
                 }
-
-
-          }
-
-
-
 });
 
 
  }
  function todaysoddsFunc() {
-   var updiv = document.getElementById("todaysodds-details");
-     //$.afui.toast("Welcome francis! Can Get data now todaysaoddsFunc");
-     var display;
-     var index, len;
+  
+ $.getJSON('http://frakaapps.epizy.com/todaysodds.php?callback=?',function(res){
+    
+	var text = "";
+  var i;
+  for (i = 0; i < res.length; i++) {
+       
+   text +='<div style="width:100%;height:auto;background:#FFFFFF;border-radius:3px; box-shadow: 0px 0px 4px black"  >' + '  <br>' + res[i].league + '<br><b style="color:blue;">' + res[i].Team +'</b><br><b style="color:blue;">Pick:&nbsp;' + res[i].pick +'</b>&nbsp;&nbsp;&nbsp;<b style="color:red">' + res[i].status +'</b></div><hr>';
+   
+   document.getElementById("todaysodds-details").innerHTML = text;
 
-     $.ajax({
-         dataType: "json",
-         data: display,
-         url: "http://localhost/ITPROJECT/XDKTESTPHP/sureodds.php",
-         cache: false,
-         method: 'GET',
-         success: function(rsp) {
-		  var datetext = "";
-
-   var datediv = document.getElementById("todaysdate");
-                  datetext += '<b>'+ rsp[0].gamedate +'</b>';
-				   datediv.innerHTML=datetext;
-   var text = "";
-   var i;
-   for (i = 0; i < rsp.length; i++) {
-            var Team=rsp[i].Team;
-            var league=rsp[i].league;
-            var pick=rsp[i].pick;
-            var gamedate=rsp[i].gamedate;
-              var odds=rsp[i].odds;
-              var id=rsp[i].id;
-
-              text +='<div style="width:100%;height:auto;background:#FFFFFF;border-radius:3px; box-shadow: 0px 0px 4px black" id="'+ league + '" onclick="eventListener(this.id)">' + '  <br>' + rsp[i].league + '<br><b style="color:blue;">' + rsp[i].Team +'</b><br><b style="color:blue;">Pick:&nbsp;' + rsp[i].pick +'</b>&nbsp;&nbsp;&nbsp;<b style="color:red">WOON</b></div><hr> &nbsp;';
-    updiv.innerHTML=text;
-
-                 }
-
-
-           }
-
-
-
- });
+                }
+});
 
  }
+function testfunc(){
+ alert("testing connection");
+  $.getJSON('http://frakaapps.epizy.com/singleodds.php?callback=?',function(res){
+   
+	var text = "";
+  var i;
+  for (i = 0; i < res.length; i++) {
+         
+             text +='<div style="width:100%;height:auto;background:#FFFFFF;border-radius:3px; box-shadow: 0px 0px 4px black" >' + '  <br>' + res[i].league + '<br><b style="color:blue;">' + res[i].Team +'</b><br><b style="color:blue;">Pick:&nbsp;' + res[i].pick +'</b>&nbsp;&nbsp;&nbsp;<b style="color:red">' + res[i].status +'</b></div><hr>';
+   
+   //text +='<div>'+ res[i].fullAdress +'<br>'+ res[i].fullName +'</div>';
+   document.getElementById("demodiv").innerHTML = text;
 
+                }
+});
+
+
+}
+function checkConnection() {
+    var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
+}
 
 
      function home(){
 
          $.afui.loadContent("#landing",false,false,"fade");
      }
-     function highodds(){
+     function singleodds(){
 
          $.afui.loadContent("#highodds-page",false,false,"fade");
+		 //showInterstitialFunc();
      }
      function sureodds(){
 
          $.afui.loadContent("#sureodds-page",false,false,"fade");
+		// showInterstitialFunc();
      }
 
      function telegram(){
 
          $.afui.loadContent("#telegram-page",false,false,"fade");
+		 showInterstitialFunc();
      }
 
 
@@ -300,48 +239,16 @@ function testFunc(){
     function todaysaodds() {
 
       $.afui.loadContent("#todaysodds-page",false,false,"fade");
+	  showInterstitialFunc();
       //  showInterstitialFunc();
     }
 
-     function signup() {
-
-        $.afui.loadContent("#signup",false,false,"fade");
-     }
+     
     function main() {
 
         $.afui.loadContent("#mainpage",false,false,"fade");
      }
-     /* checking authentication details to login */
-
-    /* registration details */
-
-
-/*
-opening sidebamenu
-*/
-
-
-                /*
-                opening swahilibox box webpage function
-                */
-    function openweb() {
-        "use strict";
-
-        try {
-
-           window.open('http://swahilibox.co.ke', '_blank', 'location=yes');
-
-        } catch (e) {
-
-             $.afui.toast("failed to open webpage");
-          }
-
-
-    }
-
-    /*
-opening twitter with a browser
-*/
+     
 
       function social_share() {
 //$.afui.toast("failed to share");
@@ -360,7 +267,7 @@ opening twitter with a browser
               navigator.app.exitApp();
          }
          else{
-              $.afui.loadContent("#homepage",false,false,"fade");
+              $.afui.loadContent("#mainpage",false,false,"fade");
          }
 
  }
@@ -369,32 +276,25 @@ opening twitter with a browser
 
         try {
           //showInterstitialFunc();
-           window.open('http://smartsoftexperts.co.ke', '_blank', 'location=yes');
+           window.open('http://https://telegram.org/frakaapps', '_blank', 'location=yes');
            $.afui.loadContent("#telegram-page",false,false,"fade");
 
         } catch (e) {
 
-             $.afui.toast("Failed to open Telegram");
+             
                $.afui.loadContent("#telegram-page",false,false,"fade");
           }
 
 
     }
-    function backbuttonFunc(){
-        if(document.getElementById('#mainpage')){
-           e.preventDefault();
-           navigator.app.exitApp();
-       }
-       else {
-           navigator.app.backHistory()
-       }
-    }
+   
 
 function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
         //highoddsFunc();
         todaysoddsFunc();
-        sureoddsFunc();
+        twoPlusOddsFunc();
+		singleoddsFunc();
         //backbuttonFunc();
         //alert("Welcome francis");
         //  $.afui.toast("Welcome francis");
@@ -407,10 +307,25 @@ function onLoad() {
     //  alert("Welcome francis");
     //    $.afui.toast("Welcome francis");
         //getdata();
-        backbuttonFunc();
+		todaysoddsFunc();
+        twoPlusOddsFunc();
+		singleoddsFunc();
+        //backbuttonFunc();
         initAd();
         showBannerFunc();
         showInterstitialFunc();
+		// register backbutton event
+		 document.addEventListener("backbutton", function(e){
+       if(document.getElementById('#mainpage')){
+           e.preventDefault();
+           navigator.app.exitApp();
+       }
+       else {
+           navigator.app.backHistory();
+       }
+    }, false);
+	   
+		
         // Add to index.js or the first page that loads with your app.
 // sending push notification.
   // Enable to debug issues.
@@ -443,18 +358,19 @@ function initAd(){
                 android : {
                     banner: 'ca-app-pub-9192508323607915/7757530082',		//PUT ADMOB ADCODE HERE
                     interstitial: 'ca-app-pub-9192508323607915/4801082300'	//PUT ADMOB ADCODE HERE
+                    
                 }
             };
             var admobid = ( /(android)/i.test(navigator.userAgent) ) ? ad_units.android : ad_units.ios;
 
             window.plugins.AdMob.setOptions( {
                 publisherId: admobid.banner,
-                interstitialAdId: admobid.interstitial,
+                interstitialAdId: admobid.interstitial,               
                 adSize: window.plugins.AdMob.AD_SIZE.SMART_BANNER,	//use SMART_BANNER, BANNER, LARGE_BANNER, IAB_MRECT, IAB_BANNER, IAB_LEADERBOARD
                 bannerAtTop: false, // set to true, to put banner at top
                 overlap: true, // banner will overlap webview
                 offsetTopBar: false, // set to true to avoid ios7 status bar overlap
-                isTesting: false, // receiving test ad
+                isTesting: true, // receiving test ad
                 autoShow: true // auto show interstitial ad when loaded
             });
 
@@ -472,7 +388,8 @@ function registerAdEvents() {
         document.addEventListener('onLeaveToAd', function(){ });
         document.addEventListener('onReceiveInterstitialAd', function(){ });
         document.addEventListener('onPresentInterstitialAd', function(){ });
-        document.addEventListener('onDismissInterstitialAd', function(){ });
+        document.addEventListener('onDismissInterstitialAd', function(){ });		
+		
     }
 //display the banner
 function showBannerFunc(){
@@ -487,6 +404,7 @@ function showInterstitialFunc(){
     window.plugins.AdMob.requestInterstitialAd();
 }
 
+
         </script>
 
     </head>
@@ -497,60 +415,60 @@ function showInterstitialFunc(){
         <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
         <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
 
-        <div class="upage vertical-col left view" id="mainpage" data-header="none" data-footer="none" data-trasnsition="pop" style="color:black;">
+        <div class="upage vertical-col left view" id="mainpage" data-header="none" data-footer="none" data-trasnsition="pop" style="color:black;overflow:auto;">
             <div class="pages">
                 <div class="upage-outer">
                     <div class="upage-content vertical-col panel ac0" id="uib_page_1">
 
-					     <div style="background:#BB7933;position:fixed">
+					     <header style="background:#BB7933;position:fixed" class="container-group outer-element uib_w_1" data-uib="app_framework/header" data-ver="3" id="af-header-0" style="background:#BB7933 ;position:fixed;">
 
                         <span onclick="openNav()"><button style="margin-top:8px;margin-left:5px;margin-bottom:8px;background-color:;"><img src="images/menu1.png" height="30px" width="30px"></button></span>
 
 
-                        <img src="images/logo.jpg" style="float:right;height:42px;width:42px;" id="back">
+                        <img src="images/logo2.png" style="float:right;height:42px;width:42px;" id="back">
                         <div id="mySidenav" class="sidenav">
 
                          <div class="panel active" id="navPage1" data-title="Foobar">
                              <ul style="width:100%">
-                                <li style="background:#BB7933"><a href="#" onclick="closeNav()"> <img src="images/logo.jpg" style="float:;height:40px;width:40px;" id=""></a></li>
+                                <li style="background:#BB7933"><a href="#" onclick="closeNav()"> <img src="images/logo2.png" style="float:;height:40px;width:40px;" id=""></a></li>
                              </ul>
                         <ul class="list" style="width:100%">
 
                             <li><a href="#" onclick="closeNav()" id="info" style="color:orange"><span class="glyphicon glyphicon-home"></span><b>&nbsp;&nbsp;&nbsp;Home</b></a></li>
 
-                            <li><a href="#" onclick="social_share()"><b>&nbsp;&nbsp;&nbsp;Share</b></a></li>
+                            <li><a href="#" onclick="social_share()" style="color:black"><b>&nbsp;&nbsp;&nbsp;Share</b></a></li>
 
-                            <li><a href="#" onclick="exitFromApp()"><b>&nbsp;&nbsp;&nbsp;Exit</b></a></li>
+                            <li><a href="#" onclick="exitFromApp()" style="color:black"><b>&nbsp;&nbsp;&nbsp;Exit</b></a></li>
 
                         </ul>
                     </div>
                         </div>
-                    </div>
+                    </header>
                         <center>
 
                             <br>
 
                     <br>
+                    <br>
 					<div id="hideDiv">
 					<button id="hidebutton" onclick="sureodds()" class="button btn-primary">2 + SURE ODDS</button>
                     <!--<li><a href="#signup" class="icon pencil" style="text-align:center">Register</a></li>-->
 
-
                             <br>
 
 
                             <br>
-
 
                               <button id="" onclick="todaysaodds()" class="button btn-primary"> TODAYS ODDS </button><br><br>
-                              <button id="" onclick="highoddsFuncc()" class="button btn-primary"> SINGLE ODDS </button><br>
-                              <button id="" onclick="testFunc()" class="button btn-primary"> Testing odss </button>
+                              <button id="" onclick="singleodds()" class="button btn-primary"> SINGLE ODDS </button><br>
+                             
                             <br>
                             <br>
+							 <button onclick="testfunc()" class="button btn-danger">Testing</button><br>
+							 <button onclick="checkConnection()" class="button btn-danger">Network state</button><br>
                             <button id="" onclick="opentelegram()" class="button btn-" style="background:#3395BB;"><img src="images/telegram.png" height="30px" width="60px"/><br>TELEGRAM </button>
-                              <div id="demo">demo</div>
-
-                            <!--<button id="signupbtn" onclick="signup()">Sign Up</button>-->
+                           <div id="demodiv"></div>
+                           
                             <br>
                     </div>
                         </center>
@@ -584,7 +502,7 @@ function showInterstitialFunc(){
          <center>
 
            <br>
-           <div id="gamedetails"><img src="loading.gif"/><img src="images/loading.gif" style="float:;height:180px;width:180px;" ></div>
+           <div id="gamedetails"><b style="">Connecting ... <br>Please Check your internet connection.</b><img src="images/loading.gif" style="float:;height:180px;width:180px;" ></div>
            <br>
          <!-- <p><a href="#" onclick="forgetpassword()">Forget password</a></p>-->
 
@@ -617,8 +535,8 @@ function showInterstitialFunc(){
          <center>
 
            <br>
-		   this is francis
-           <div id="highodds-details">Francis do something<img src="images/loading.gif" style="float:;height:180px;width:180px;" ></div>
+		   
+           <div id="single-details"><b style="">Connecting ... <br>Please Check your internet connection.</b><img src="images/loading.gif" style="float:;height:180px;width:180px;" ></div>
            <br>
          <!-- <p><a href="#" onclick="forgetpassword()">Forget password</a></p>-->
 
@@ -651,7 +569,7 @@ function showInterstitialFunc(){
 
            <br>
            <div id="todaysdate"> </div>
-           <div id="todaysodds-details"><img src="images/loading.gif" style="float:;height:180px;width:180px;" ></div>
+           <div id="todaysodds-details"><b style="">Connecting ... <br>Please Check your internet connection.</b><img src="images/loading.gif" style="float:;height:180px;width:180px;" ></div>
            <br>
          <!-- <p><a href="#" onclick="forgetpassword()">Forget password</a></p>-->
 

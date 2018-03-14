@@ -1,11 +1,11 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "xdktest",
-  "short_name": "xdktest",
-  "version": "com.xdktest.android",
-  "description": "A blank PhoneGap app.",
-  "author": "PhoneGap Team",
+  "name": "BETIN INVESTOR",
+  "short_name": "BETIN INVESTOR",
+  "version": "com.BetinInvest.android",
+  "description": "FREE BETTING TIPS.",
+  "author": "BETIN INVESTOR",
   "icons": [],
   "start_url": "index.html"
 }

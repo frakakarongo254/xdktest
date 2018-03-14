@@ -9,7 +9,9 @@
         <link rel="stylesheet" type="text/css" href="app_framework/3.0/af.ui.css" data-ver="2">
         <link rel="stylesheet" type="text/css" href="app_framework/3.0/icons.min.css">
         <title>Betin Investor</title>
+		
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Security-Policy" content="default-src *; style-src *  'unsafe-inline'; script-src *  'unsafe-inline'; media-src *">
         <link rel="stylesheet" type="text/css" href="lib/appframework/icons.css">
         <link rel="stylesheet" type="text/css" href="lib/appframework/af.ui.css">
         <link rel="stylesheet" href="css/design.css" type="text/css">
@@ -194,7 +196,22 @@ function testfunc(){
 
 
 }
+function checkConnection() {
+alert("Checking WIFI connection");
+    var networkState = navigator.connection.type;
 
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
+}
 
 
      function home(){
@@ -449,6 +466,7 @@ function showInterstitialFunc(){
                             <br>
                             <br>
 							 <button onclick="testfunc()" class="button btn-danger">Testing</button><br>
+							 <button onclick="checkConnection()" class="button btn-danger">Network state</button><br>
                             <button id="" onclick="opentelegram()" class="button btn-" style="background:#3395BB;"><img src="images/telegram.png" height="30px" width="60px"/><br>TELEGRAM </button>
                            <div id="demodiv"></div>
                            

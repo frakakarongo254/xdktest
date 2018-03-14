@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.xdktest.android" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.BetinInvest.android" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <feature name="AdMob">
         <param name="android-package" value="com.cupertino.cordova.plugin.AdMob" />
         <param name="onload" value="true" />
@@ -14,19 +14,34 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <name>xdktest</name>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <name>BETIN INVESTOR </name>
     <description>
-        A blank PhoneGap app.
+        FREE BETTING TIPS.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        BETIN INVESTOR
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <access subdomains="true" uri="http://frakaapps.epizy.com" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="*" />
+    <allow-navigation href="*" />
     <gap:plugin name="cordova-plugin-admob-simple" source="npm" />
     <gap:plugin name="onesignal-cordova-plugin" source="npm" />
     <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
     <allow-intent href="market:*" />
+    <icon density="mdpi" src="res/320.png" />
+    <icon density="hdpi" src="res/320.png" />
+    <splash density="land-hdpi" src="res/320.png" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="android-minSdkVersion" value="15" />
 </widget>
