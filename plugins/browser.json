@@ -8,27 +8,27 @@
   },
   "installed_plugins": {
     "cordova-plugin-admob-simple": {
-      "PACKAGE_NAME": "com.xdktest.android"
+      "PACKAGE_NAME": "com.betinInvestor.android"
     },
     "cordova-plugin-x-socialsharing": {
-      "PACKAGE_NAME": "com.xdktest.android"
+      "PACKAGE_NAME": "com.betinInvestor.android"
     },
     "onesignal-cordova-plugin": {
-      "PACKAGE_NAME": "com.xdktest.android"
+      "PACKAGE_NAME": "com.betinInvestor.android"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.BetinInvest.android"
+      "PACKAGE_NAME": "com.betinInvestor.android"
     },
     "cordova-plugin-network-information": {
-      "PACKAGE_NAME": "com.BetinInvest.android"
+      "PACKAGE_NAME": "com.betinInvestor.android"
     }
   },
   "dependent_plugins": {
     "cordova-admob-sdklibs": {
-      "PACKAGE_NAME": "com.xdktest.android"
+      "PACKAGE_NAME": "com.betinInvestor.android"
     },
     "es6-promise-plugin": {
-      "PACKAGE_NAME": "com.xdktest.android"
+      "PACKAGE_NAME": "com.betinInvestor.android"
     }
   }
 }

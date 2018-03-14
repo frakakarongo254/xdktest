@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.BetinInvest.android" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.betinInvestor.android" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>BETIN INVESTOR </name>
     <description>
         FREE BETTING TIPS.
@@ -29,9 +29,9 @@
         <icon density="hdpi" src="res/320.png" />
         <splash density="land-hdpi" src="res/320.png" />
     </platform>
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
     <engine name="android" spec="~7.0.0" />
     <engine name="ios" spec="~4.5.4" />
     <engine name="browser" spec="^5.0.3" />
-    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
-    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
 </widget>
