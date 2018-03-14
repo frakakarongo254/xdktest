@@ -14,8 +14,8 @@
 		<!--<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src *;"/>--> 
 		
 		
-		<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src *"/>
-	<!--<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'; media-src *; connect-src http://frakaapps.epizy.com https://frakaapps.epizy.com" />-->
+		<!--<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; frame-src *;connect-src http://frakaapps.epizy.com https://frakaapps.epizy.com"/>-->
+	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'; media-src *; connect-src http://frakaapps.epizy.com https://frakaapps.epizy.com" />
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		
         <link rel="stylesheet" type="text/css" href="lib/appframework/icons.css">
@@ -219,21 +219,32 @@ alert("Checking WIFI connection");
     alert('Connection type: ' + states[networkState]);
 }
 function crossDomainTest(){
-  alert("testing data entry");
-  $.ajax({
-       url: "http://frakaapps.epizy.com/index.php",
-          context: document.body,
-          cache : false,
-          data: {
-               username :  $('#username').val()
-              // password :  $('#password').val(),
-			 // alert("error"),
-          },
-          success: function ( data ) {
-              // do something
-			  alert(data);
-         }
-   });
+  alert("testing data entry FRANCIS");
+  var options = { url: "http://frakaapps.epizy.com/api.php",
+  method: 'POST',
+  cache: false,
+  data: "someObject", "xhrFields": {
+  withCredentials: true },
+  crossDomain: true,
+  dataType: 'json',
+  start: function(){
+  showloader();
+  },
+  success: function(responseData, status, xhr){ 
+  document.getElementById("demodiv").innerHTML = responseData;
+  alert(responseData);
+  alert(status);
+  alert(xhr);
+  checkErrors(responseData);
+  renderPage(responseData);
+document.getElementById("demodiv").innerHTML = responseData;  
+  },
+  error: function(e){ 
+  console.log(e) ;
+   alert(e);
+    }
+  };
+  return $.ajax(options);
 
 }
 
@@ -340,7 +351,7 @@ function onLoad() {
         showInterstitialFunc();
 		// register backbutton event
 		 document.addEventListener("backbutton", function(e){
-       if(document.getElementById('#mainpage')){
+       if(document.getElementById('#uib_page_1')){
            e.preventDefault();
            navigator.app.exitApp();
        }
@@ -492,7 +503,7 @@ function showInterstitialFunc(){
 							 <button onclick="checkConnection()" class="button btn-danger">Network state</button><br>
 							 <button onclick="crossDomainTest()" class="button btn-danger">crossDomainTest</button><br>
                             <button id="" onclick="opentelegram()" class="button btn-" style="background:#3395BB;"><img src="images/telegram.png" height="30px" width="60px"/><br>TELEGRAM </button>
-                           <div id="demodiv"><input id="username" type="text" value="francis"/></div>
+                           <div id="demodiv">demo</div>
                            
                             <br>
                     </div>

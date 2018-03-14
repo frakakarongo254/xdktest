@@ -19,6 +19,8 @@
     <allow-intent href="market:*" />
     <allow-intent href="*" />
     <allow-navigation href="*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
     <gap:plugin name="cordova-plugin-admob-simple" source="npm" />
     <gap:plugin name="onesignal-cordova-plugin" source="npm" />
     <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
