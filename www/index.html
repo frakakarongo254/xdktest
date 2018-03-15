@@ -95,6 +95,7 @@
         <script src="js/app.js"></script>
         <!-- for your event code, see README and file comments for details -->
         <script src="js/init-app.js"></script>
+        <script src="js/jquery.jsonp-2.3.1.min.js"></script>
         <!-- for your init code, see README and file comments for details -->
         <script src="xdk/init-dev.js"></script>
         <!-- normalizes device and document ready events, see file for details -->
@@ -268,23 +269,31 @@ function GetProducts() {
             }); 
         }
 function showUser() {
+
+
 alert("final testing");
-    if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    $.ajax({
+        url: 'http://frakaapps.epizy.com/singleodds.php?callback=?',
+		dataType: 'jsonp',
+        callbackParameter: 'callback',
+        timeout: 25000,
+        success: function(data, status) {
+            //$('#your-tweets').append('<li>The feed loads fine');
+			alert(JSON.stringify(data));
+			alert(status);
+			$('#demodiv').empty();
+			$('#demodiv').append(JSON.stringify(data));
+            //$('#demodiv').empty();
+            $.each(data, function(i,item){
+			   alert(item.league);
+                //var tweet = item.text;
+               // $('#demodiv').append('<li>'+tweet);
+            });
+        },
+        error: function(){
+            $('#demodiv').append('<li>There was an error loading the feed');
         }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-			alert(this.responseText);
-                document.getElementById("demodiv").innerHTML = this.responseText;
-				
-            }
-        };
-        xmlhttp.open("GET","http://frakaapps.epizy.com/todaysodds.php?callback=?",true);
-        xmlhttp.send();
+    });
 }
      function home(){
 
